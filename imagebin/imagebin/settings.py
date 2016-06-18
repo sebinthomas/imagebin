@@ -11,10 +11,10 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+from django.conf.global_settings import STATICFILES_FINDERS
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'imagebin',
+    'djangobower',
+    'imageupload',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -114,8 +117,18 @@ USE_L10N = True
 
 USE_TZ = True
 
+STATICFILES_FINDERS = STATICFILES_FINDERS + ['djangobower.finders.BowerFinder']
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR, 'components')
+BOWER_INSTALLED_APPS = ['bulma#0.0.28']
+
+try:
+    from application_settings import *
+except ImportError:
+    pass

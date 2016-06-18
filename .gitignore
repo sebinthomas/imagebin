@@ -69,6 +69,7 @@ target/
 .pydevproject
 
 # Bower
+components/
 bower_components/
 
 # sqlite3
