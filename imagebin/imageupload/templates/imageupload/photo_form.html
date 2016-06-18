@@ -1,0 +1,13 @@
+{% extends "imagebin/base.html" %}
+{% block content %}
+<div class="section">
+    <div class="columns">
+        <div class="column is-8 is-offset-2">
+          <form enctype="multipart/form-data" action="{% url 'photo-upload' %}" method="post" class="control">
+                {% csrf_token %}{{ form }}
+                <button class="button is-primary" title="Export">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

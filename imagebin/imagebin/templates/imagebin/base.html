@@ -1,0 +1,70 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>{% block title %}Home{% endblock title %} – ImageBin :)</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
+
+        {% block css %}
+        <link rel="stylesheet" href="{% static 'bulma/css/bulma.min.css' %}">
+        <Link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+        {% endblock css %}
+
+        {% block extra_css %}
+        {% endblock extra_css %}
+
+        {% block extra_head %}
+        {% endblock extra_head %}
+
+    </head>
+    <body>
+   {% if messages %}
+    <div class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8 is-offset-2">
+                    {% for message in messages %}
+                    <div class="notification is-primary">
+                        <button class="delete" onClick="removeNotification(this)"></button>
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% block content %}{% endblock content %}
+
+    <div class="container">
+      <footer class="footer has-text-centered">
+        &copy; <a href="https://github.com/sebinthomas/imagebin">imagebin</a> {% now "Y" %}
+      </footer>
+    </div>
+
+    {% block js %}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/cash/1.3.0/cash.min.js"></script>
+    <script type="text/javascript">
+      $(function(){
+        $(".notification .delete").on("click", function(){
+          var no_delete = $(this);
+          var section = no_delete.closest('.section');
+          no_delete.closest('.notification').remove();
+          if($(".notification").length == 0) {
+            section.remove();
+          }
+        });
+      });
+    </script>
+    {% endblock js %}
+
+    {% block extra_js %}
+    {% endblock extra_js %}
+
+    </body>
+</html>
