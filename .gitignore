@@ -55,8 +55,7 @@ coverage.xml
 # Django stuff:
 *.log
 media/
-static/
-imagebin/imagebin/static/
+imagebin/static/
 
 # Sphinx documentation
 docs/_build/
