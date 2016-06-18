@@ -5,6 +5,7 @@ from .forms import PhotoForm
 from django.views.generic.detail import DetailView
 from django.http.response import HttpResponseRedirect
 from django.utils.encoding import force_text
+from django.views.generic.list import ListView
 
 
 class PhotoUploadView(CreateView):
@@ -22,4 +23,8 @@ class PhotoUploadView(CreateView):
 
 
 class PhotoDetailView(DetailView):
+    model = Photo
+
+
+class PhotoListView(ListView):
     model = Photo

@@ -18,11 +18,12 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 
-from imageupload.views import PhotoUploadView, PhotoDetailView
+from imageupload.views import PhotoUploadView, PhotoDetailView, PhotoListView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^upload/', PhotoUploadView.as_view(), name="photo-upload"),
-    url(r'^see/(?P<slug>[\w-]+)/$', PhotoDetailView.as_view(), name="photo-see")
+    url(r'^see/(?P<slug>[\w-]+)/$', PhotoDetailView.as_view(), name="photo-see"),
+    url(r'^$', PhotoListView.as_view(), name="photo-list"),
 ]
 urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

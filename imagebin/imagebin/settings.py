@@ -116,13 +116,14 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+STATIC_URL = '/static/'
 
 STATICFILES_FINDERS = STATICFILES_FINDERS + ['djangobower.finders.BowerFinder']
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
-STATIC_URL = '/static/'
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR, 'components')

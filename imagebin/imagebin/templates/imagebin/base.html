@@ -12,7 +12,8 @@
 
         {% block css %}
         <link rel="stylesheet" href="{% static 'bulma/css/bulma.min.css' %}">
-        <Link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
         {% endblock css %}
 
         {% block extra_css %}
@@ -23,6 +24,17 @@
 
     </head>
     <body>
+      <div class="hero is-info">
+        <div class="hero-head">
+          <nav class="nav">
+            <div class="nav-left">
+              <a class="nav-item" href="/">
+                <i class="logo fa fa-paint-brush"></i><h4 class="logo-text"> Image bin </h4>
+              </a>
+            </div>
+          </nav>
+        </div>
+      </div>
    {% if messages %}
     <div class="section">
         <div class="container">
